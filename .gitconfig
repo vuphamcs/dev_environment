@@ -1,0 +1,17 @@
+[push]
+	default = upstream
+[color]
+	ui = true
+[core]
+	excludesfile = /Users/Pham/.gitignore
+	editor = vim
+	pager = less
+[alias]
+spy = "!sh -c '[ $# = 2 ] && git ls-tree -r --name-only \"$1\" | grep \"$2\" && exit 0 || echo \"usage: git ls-tree -r --name-only <branch> | grep <string>\" >&2 && exit 1' -"
+steal = "!sh -c '[ $# = 2 ] && git ls-tree -r --name-only \"$1\" | grep \"$2\" | xargs git checkout \"$1\" && exit 0 || echo \"usage: git ls-tree -r --name-only <branch> | grep <string> | xargs git checkout <branch>\" && echo \"Use reesponsibly...\" && echo \"hint: You may want to git spy first!!\" >&2 && exit 1' -"
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[user]
+	name = vuphamcs
+	email = vu.pham@annkissam.com
